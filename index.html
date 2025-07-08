@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AX Duathlon Series</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    nav {
+      background-color: #001f3f;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav .title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      color: white;
+    }
+
+    nav ul li:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ff4136;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th.blue-header {
+      background-color: #001f3f;
+      color: white;
+    }
+
+    td small {
+      display: block;
+      font-size: 0.65em;
+      color: #555;
+    }
+
+    select {
+      margin: 10px 0;
+      padding: 6px;
+    }
+
+    .scroll-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-wrapper table {
+      min-width: 700px;
+    }
+
+    @media (max-width: 768px) {
+      table {
+        font-size: 0.8em;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="title">AX Duathlon Series</div>
+    <ul>
+      <li onclick="showPage('home')">Home</li>
+      <li onclick="showPage('results')">Results</li>
+      <li onclick="showPage('points')">Series Points</li>
+      <li onclick="showPage('rules')">Rules and FAQs</li>
+    </ul>
+  </nav>
+
+  <div id="home" class="container" style="display:none">
+    <h2>Welcome to the AX Duathlon Series</h2>
+    <p>This is the home page. Add upcoming race dates, registration links, and event details here.</p>
+  </div>
+
+  <div id="results" class="container">
+    <h2>Race 2 Results</h2>
+    <label for="genderFilter">Filter by Gender:</label>
+    <select id="genderFilter" onchange="renderTable()">
+      <option value="All">Overall</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+    </select>
+    <div id="resultsTable" class="scroll-wrapper"></div>
+  </div>
+
+  <div id="points" class="container" style="display:none">
+    <h2>Series Points</h2>
+
+    <h3>Male Series Points</h3>
+    <div class="scroll-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Total Points</th>
+            <th>Race 1</th>
+            <th>Race 2</th>
+            <th>Race 3</th>
+            <th>Race 4</th>
+            <th>Race 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Matthew Graystone</td><td>25</td><td>25<br><small>00:42:03</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>2</td><td>Nicholas Lee</td><td>20</td><td>20<br><small>00:46:53</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>3</td><td>Dan Chen</td><td>16</td><td>16<br><small>00:47:04</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>4</td><td>Venelin Yanchev</td><td>13</td><td>13<br><small>00:51:09</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Female Series Points</h3>
+    <div class="scroll-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Total Points</th>
+            <th>Race 1</th>
+            <th>Race 2</th>
+            <th>Race 3</th>
+            <th>Race 4</th>
+            <th>Race 5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Dahlia Rohm</td><td>25</td><td>25<br><small>00:39:26</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>2</td><td>Ilja Timmermans</td><td>20</td><td>20<br><small>00:48:23</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>3</td><td>Sarah Chaddock</td><td>16</td><td>16<br><small>00:49:21</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+          <tr><td>4</td><td>Sarasa Naijma</td><td>13</td><td>13<br><small>00:51:11</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td><td>[Pts]<br><small>[Time]</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ✅ Rules and FAQs Page -->
+  <div id="rules" class="container" style="display:none">
+    <h2>Rules and FAQs</h2>
+    <h3>Race Rules</h3>
+    <ul>
+      <li>The duathlon consists of a 1K run, a 10K bike, and a 3K run.</li>
+      <li>Only Tangerine Bikeshare bikes are allowed for the race. Make sure you have an account to unlock the bike.</li>
+      <li>Be mindful of pedestrians and other members of the community since we are racing on public grounds.</li>
+      <li>Drafting is not permitted. The drafting zone is 10m x 2m. Although there is no way to currently enforce this rule, please follow it for the spirit of the sport and safety of the participants.</li>
+      <li>Transition rules must be followed, or a time penalty may be applied to your final time. (Details in 'How to race a duathlon')</li>
+      <li>Race bibs must be visible from the front at all times.</li>
+      <li>Have fun!</li>
+
+    <h3>How to race a duathlon</h3>
+    <u1>
+      <li>The race begins with a 1K run consisting of 500m one way, then back the same way. There will be a flag that marks the 500m spot. You will turn back at the flag.</li>
+      <li>Following the run, you enter the transition zone to undock your bike and begin the bike segment.</li>
+      <li>The transition zone is defined by the large area of grass where the bikes are docked. There will be snacks/candy/water available.</li>
+      <li>When starting the bike segment, you may only mount your bike after completely leaving the transition zone. Failing to do so will result in a time pentalty.</li>
+      <li>The 10K bike segment is a loop around the entire length of the Toronto Island. The course route is available here. There are minimal turns to reduce the chance of getting lost. There will also be signage to point when to turn. If you are unfamiliar with the course, it is recommended to bring a phone/bike computer to navigate.</li>
+      <li>When completing your bike segment, you must dismount your bike (defined by having both feet touching the ground) before entering the transition zone. Failing to do so will result in a time penalty.</li>
+      <li>Dock your bike and start the final run segment. Wait a few seconds to confirm you have successfully docked your bike or else Bikeshare might charge you more money!</li>
+      <li>Located in the transition zone, there will be a large bin for you to put your equipment after the bike segment (helmets, phone, gloves, waterbottle, etc).</li>
+      <li>The 3K run is 1.5K one way, then back the same way. There will be a flag that marks the 1.5K spot. You will turn back at the flag.</li>
+      <li>As you approach the finish line, smile for the camera!</li>
+    </ul>
+
+    <h3>FAQs</h3>
+    <p><strong>Q: Do I need to bring my own bike?</strong><br>A: No, bikes are provided through Tangerine Bikeshare.</p>
+    <p><strong>Q: Is there a cut-off time?</strong><br>A: No official cut-off, but please complete the race before sunset (approximately 2 hours).</p>
+    <p><strong>Q: Can beginners participate?</strong><br>A: Absolutely! Our race hosts a wide range of athletes! Athletes are grouped into waves based on their projected finish times to ensure they race alongside others of similar pace.</p>
+  </div>
+
+  <script>
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbwlel3pC6Bor8GTwHqvAGoLRJRdrqOlepnzBkh5ubISQNjA9C67UU9ULeSwDBIuiwI/exec";
+    let rawData = [];
+
+    function showPage(pageId) {
+      const pages = ["home", "results", "points", "rules"];
+      pages.forEach(id => {
+        document.getElementById(id).style.display = (id === pageId) ? "block" : "none";
+      });
+    }
+
+    function formatTime(t) {
+      return t === "00:00:00" ? "00:00:00" : t;
+    }
+
+    function formatPace(pace) {
+      return pace === "00:00:00" || pace === "0" ? "00:00" : pace.replace(/^00:/, "");
+    }
+
+    function formatSpeed(speed) {
+      return speed && speed !== "#DIV/0!" ? `${parseFloat(speed).toFixed(2)} km/h` : "0.00 km/h";
+    }
+
+    function formatTotalTime(t) {
+      return t === "00:00:00" ? null : t;
+    }
+
+    function calculateRankedData(data, gender) {
+      const filtered = data.filter(r => r["Total Time"] !== "00:00:00" && (gender === "All" || r["Division"] === gender));
+      filtered.sort((a, b) => a["Total Time"].localeCompare(b["Total Time"]));
+      filtered.forEach((r, i) => r.rank = i + 1);
+      const others = data.filter(r => r["Total Time"] === "00:00:00" || (gender !== "All" && r["Division"] !== gender));
+      others.forEach(r => r.rank = "/");
+      return [...filtered, ...others];
+    }
+
+    function renderTable() {
+      const gender = document.getElementById("genderFilter").value;
+      const rankedData = calculateRankedData([...rawData], gender);
+      const headers = ["Rank", "Name", "Division", "Bib #", "Run 1", "T1", "Bike", "T2", "Run 2", "Total Time"];
+      const paceMap = { "Run 1": "Run 1 Pace", "Bike": "Bike Pace", "Run 2": "Run 2 Pace" };
+
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+
+      headers.forEach(h => {
+        const th = document.createElement("th");
+        th.innerText = h;
+        if (["Run 1", "Bike", "Run 2", "T1", "T2", "Total Time"].includes(h)) th.classList.add("blue-header");
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      rankedData.forEach(row => {
+        if (gender !== "All" && row["Division"] !== gender) return;
+        const tr = document.createElement("tr");
+        headers.forEach(h => {
+          const td = document.createElement("td");
+          if (paceMap[h]) {
+            td.innerHTML = `${formatTime(row[h])}<br><small>${h === "Bike" ? formatSpeed(row[paceMap[h]]) : formatPace(row[paceMap[h]])}</small>`;
+          } else if (h === "Total Time") {
+            td.innerText = formatTotalTime(row[h]) || "00:00:00";
+          } else if (h === "Rank") {
+            td.innerText = row.rank;
+          } else {
+            td.innerText = row[h] || "";
+          }
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "scroll-wrapper";
+      wrapper.appendChild(table);
+
+      const container = document.getElementById("resultsTable");
+      container.innerHTML = "";
+      container.appendChild(wrapper);
+    }
+
+    fetch(SHEET_URL)
+      .then(res => res.json())
+      .then(data => {
+        rawData = data;
+        renderTable();
+      });
+  </script>
+</body>
+</html>
